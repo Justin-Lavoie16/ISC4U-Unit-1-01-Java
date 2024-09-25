@@ -9,31 +9,29 @@
 
 import java.util.Scanner;
 
-/*
- * This program calculates how many logs a truck can carry
- * based on the length of the logs and the truck's weight capacity.
- */
-final class CheckLogLength {
+/**
+ * Max weight per is in kg/m and max weight is in kg.
+*
+final class Logprog {
 
-    private CheckLogLength() {
-        // Prevent instantiation
+    static final double WEIGHTPERLOG = 20;
+    static final double MAXWEIGHT = 1100;
+
+    private Logprog() {
+        throw new IllegalStateException("Cannot be instantiated");
     }
 
     public static void main(final String[] args) {
-        final Scanner input = new Scanner(System.in);
-
-        System.out.print("Enter log length (m): ");
-
-        final float length = Float.parseFloat(input.nextLine());
-        final float maxLogsCarried = 1100 / (20 * length);
-
-        System.out.println("A truck can carry "
-            + maxLogsCarried + " " + length + " meter long logs.");
-
-        input.close();
+        // Get inputs
+        final Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose the length of logs (m) (0.25, 0.5, or 1): ");
+        // Calculations
+        final float LogLength = scanner.nextFloat();
+        // Output
+        System.out.println("The truck can carry this many logs: "
+            + MAXWEIGHT / (WEIGHTPERLOG * LogLength));
 
         System.out.println("\nDone.");
     }
-}
 
-// Add a newline here to fix the NewlineAtEndOfFile error
+}
